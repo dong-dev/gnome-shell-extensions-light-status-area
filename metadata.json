@@ -1,5 +1,5 @@
 {
-  "description": "Gnome extension that hide keyboard and activities menu, let ubuntu screen more clear",
+  "description": "Gnome extension that hide keyboard and activities menu,\n move clock to the right side, \nlet ubuntu screen more clear",
   "gettext-domain": "light-status-area",
   "name": "Light status area",
   "settings-schema": "dev.dong.light-status-area",

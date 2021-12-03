@@ -13,6 +13,8 @@ function enable() {
     if (keyboardButton) {
         keyboardButton.container.hide();
     }
+    // Move clock to the right side
+    Main.panel._centerBox.remove_child(Main.panel.statusArea.dateMenu.container); Main.panel._rightBox.insert_child_at_index(Main.panel.statusArea.dateMenu.container, 0);
 }
 
 function disable() {
@@ -24,4 +26,6 @@ function disable() {
     if (keyboardButton) {
         keyboardButton.container.show();
     }
+    // Move clock to center
+    Main.panel._rightBox.remove_child(Main.panel.statusArea.dateMenu.container); Main.panel._centerBox.add_child(Main.panel.statusArea.dateMenu.container);
 }
