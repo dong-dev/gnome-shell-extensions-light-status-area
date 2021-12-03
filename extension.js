@@ -7,7 +7,7 @@ function init() {
 function enable() {
     const activitiesButton = Main.panel.statusArea['activities'];
     if (activitiesButton) {
-        activitiesButton.container.hide()
+        activitiesButton.container.hide();
     }
     const keyboardButton = Main.panel.statusArea['keyboard'];
     if (keyboardButton) {
@@ -16,12 +16,12 @@ function enable() {
 }
 
 function disable() {
-    const activitiesButton = Main.panel.statusArea['activities']
+    const activitiesButton = Main.panel.statusArea['activities'];
     if (activitiesButton) {
-        activitiesButton.container.show()
+        activitiesButton.container.show();
     }
-    const keyboardButton = Main.panel.statusArea['keyboard']
+    const keyboardButton = Main.panel.statusArea['keyboard'];
     if (keyboardButton) {
-        keyboardButton.container.show()
+        keyboardButton.container.show();
     }
 }
