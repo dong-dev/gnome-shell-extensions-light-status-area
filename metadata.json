@@ -1,0 +1,13 @@
+{
+  "description": "Gnome extension that hide keyboard and activities menu, let ubuntu screen more clear",
+  "gettext-domain": "light-status-area",
+  "name": "Light status area",
+  "settings-schema": "dev.dong.light-status-area",
+  "shell-version": [
+    "40",
+    "41"
+  ],
+  "url": "https://github.com/dong-dev/gnome-shell-extensions-light-status-area",
+  "uuid": "light-status-area@dong.dev",
+  "version": 1
+}
