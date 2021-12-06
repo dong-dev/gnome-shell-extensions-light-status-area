@@ -1,31 +1,56 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 const Main = imports.ui.main;
 
+class LightStatusAreaExtension {
+    // #region Defaults Getters
+    get activitiesButton() {
+        return Main.panel.statusArea.activities;
+    }
+    get keyboardButton() {
+        return Main.panel.statusArea.keyboard;
+    }
+    get dateMenuButton() {
+        return Main.panel.statusArea.dateMenu;
+    }
+    get RightBox(){
+        return Main.panel._rightBox;
+    }
+    get CenterBox(){
+        return Main.panel._centerBox;
+    }
+    // #endregion Defaults Getters
+    constructor() {
+    }
+    enable() {
+        if (this.activitiesButton) {
+            this.activitiesButton.container.hide();
+        }
+        if (this.keyboardButton) {
+            this.keyboardButton.container.hide();
+        }
+        if (this.dateMenuButton) {
+            this.dateMenuButton.setSensitive(false);
+            this.CenterBox.remove_child(this.dateMenuButton.container);
+            this.RightBox.insert_child_at_index(this.dateMenuButton.container, 0);
+        }
+    }
+    disable() {
+        if (this.activitiesButton) {
+            this.activitiesButton.container.show();
+        }
+        if (this.keyboardButton) {
+            this.keyboardButton.container.show();
+        }
+        if (this.dateMenuButton) {
+            this.dateMenuButton.setSensitive(true);
+            // Move clock to center
+            this.RightBox.remove_child(this.dateMenuButton.container); 
+            this.CenterBox.add_child(this.dateMenuButton.container);
+        }
+    }
+
+}
+
 function init() {
-}
-
-function enable() {
-    const activitiesButton = Main.panel.statusArea['activities'];
-    if (activitiesButton) {
-        activitiesButton.container.hide();
-    }
-    const keyboardButton = Main.panel.statusArea['keyboard'];
-    if (keyboardButton) {
-        keyboardButton.container.hide();
-    }
-    // Move clock to the right side
-    Main.panel._centerBox.remove_child(Main.panel.statusArea.dateMenu.container); Main.panel._rightBox.insert_child_at_index(Main.panel.statusArea.dateMenu.container, 0);
-}
-
-function disable() {
-    const activitiesButton = Main.panel.statusArea['activities'];
-    if (activitiesButton) {
-        activitiesButton.container.show();
-    }
-    const keyboardButton = Main.panel.statusArea['keyboard'];
-    if (keyboardButton) {
-        keyboardButton.container.show();
-    }
-    // Move clock to center
-    Main.panel._rightBox.remove_child(Main.panel.statusArea.dateMenu.container); Main.panel._centerBox.add_child(Main.panel.statusArea.dateMenu.container);
+    return new LightStatusAreaExtension();
 }
