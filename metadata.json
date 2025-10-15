@@ -5,7 +5,10 @@
   "settings-schema": "dev.dong.light-status-area",
   "shell-version": [
     "45",
-    "46"
+    "46",
+    "47",
+    "48",
+    "49"
   ],
   "url": "https://github.com/dong-dev/gnome-shell-extensions-light-status-area",
   "uuid": "light-status-area@dong.dev",
