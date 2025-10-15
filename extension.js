@@ -34,6 +34,12 @@ export default class LightStatusAreaExtension extends Extension {
             this.keyboardButton.container.hide();
         }
         if (this.dateMenuButton) {
+            if (this.dateMenuButton._eventsItem) {
+                this.dateMenuButton._eventsItem.hide();
+            }
+            if (this.dateMenuButton._displaysSection) {
+                this.dateMenuButton._displaysSection.hide();
+            }
             // this.dateMenuButton.setSensitive(false);
             this.CenterBox.remove_child(this.dateMenuButton.container);
             this.RightBox.insert_child_at_index(this.dateMenuButton.container, 0);
