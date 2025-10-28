@@ -40,6 +40,7 @@ export default class LightStatusAreaExtension extends Extension {
             if (this.dateMenuButton._displaysSection) {
                 this.dateMenuButton._displaysSection.hide();
             }
+            this.dateMenuButton.add_style_class_name('display-clock-clear-hpadding');
             // this.dateMenuButton.setSensitive(false);
             this.CenterBox.remove_child(this.dateMenuButton.container);
             this.RightBox.insert_child_at_index(this.dateMenuButton.container, 0);
@@ -57,6 +58,7 @@ export default class LightStatusAreaExtension extends Extension {
             // Move clock to center
             this.RightBox.remove_child(this.dateMenuButton.container); 
             this.CenterBox.add_child(this.dateMenuButton.container);
+            this.dateMenuButton.remove_style_class_name('display-clock-clear-hpadding');
             
         }
     }

@@ -5,3 +5,7 @@
 .menu-button-hover {
 	margin: 1px;
 } */
+.display-clock-clear-hpadding {
+   -natural-hpadding: 0;
+   -minimum-hpadding: 0; 
+}
