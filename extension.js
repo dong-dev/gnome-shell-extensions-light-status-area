@@ -1,4 +1,5 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
+import Clutter from 'gi://Clutter';
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
@@ -20,6 +21,11 @@ export default class LightStatusAreaExtension extends Extension {
     }
     get CenterBox(){
         return Main.panel._centerBox;
+    }
+
+    // Get messageTray 
+    get messageTray() {
+        return Main.messageTray;
     }
     
     // #endregion Defaults Getters
@@ -45,6 +51,10 @@ export default class LightStatusAreaExtension extends Extension {
             this.CenterBox.remove_child(this.dateMenuButton.container);
             this.RightBox.insert_child_at_index(this.dateMenuButton.container, 0);
         }
+        // Move the message tray to the top-right corner
+        if (this.messageTray) {
+            this.messageTray._bannerBin.set_x_align(Clutter.ActorAlign.END)
+        }
     }
     disable() {
         // if (this.activitiesButton) {
@@ -59,7 +69,11 @@ export default class LightStatusAreaExtension extends Extension {
             this.RightBox.remove_child(this.dateMenuButton.container); 
             this.CenterBox.add_child(this.dateMenuButton.container);
             this.dateMenuButton.remove_style_class_name('display-clock-clear-hpadding');
-            
+
+        }
+        // Move the message tray to top-center
+        if (this.messageTray) {
+            this.messageTray._bannerBin.set_x_align(Clutter.ActorAlign.CENTER)
         }
     }
 
