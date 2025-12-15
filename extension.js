@@ -33,7 +33,7 @@ export default class LightStatusAreaExtension extends Extension {
     }
 
     get dash() {
-        return Main.overview.dash;
+        return this.overview.dash;
     }
 
     get layoutManager() {
