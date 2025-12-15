@@ -27,9 +27,17 @@ export default class LightStatusAreaExtension extends Extension {
     get messageTray() {
         return Main.messageTray;
     }
+    
+    get overview() {
+        return Main.overview;
+    }
 
     get dash() {
         return Main.overview.dash;
+    }
+
+    get layoutManager() {
+        return Main.layoutManager;
     }
     
     // #endregion Defaults Getters
@@ -61,6 +69,9 @@ export default class LightStatusAreaExtension extends Extension {
         }
         
         this.hideDash();
+
+        if (this.layoutManager._startingUp)
+            this.layoutManager.connectObject('startup-complete', () => this.overview.hide(), this);
     }
     disable() {
         // if (this.activitiesButton) {
@@ -83,6 +94,8 @@ export default class LightStatusAreaExtension extends Extension {
         }
 
         this.showDash();
+
+        this.layoutManager.disconnectObject(this);
     }
 
     hideDash() {
