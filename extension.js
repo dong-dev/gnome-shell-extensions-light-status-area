@@ -27,6 +27,10 @@ export default class LightStatusAreaExtension extends Extension {
     get messageTray() {
         return Main.messageTray;
     }
+
+    get dash() {
+        return Main.overview.dash;
+    }
     
     // #endregion Defaults Getters
     constructor(params) {
@@ -55,6 +59,8 @@ export default class LightStatusAreaExtension extends Extension {
         if (this.messageTray) {
             this.messageTray._bannerBin.set_x_align(Clutter.ActorAlign.END)
         }
+        
+        this.hideDash();
     }
     disable() {
         // if (this.activitiesButton) {
@@ -75,6 +81,18 @@ export default class LightStatusAreaExtension extends Extension {
         if (this.messageTray) {
             this.messageTray._bannerBin.set_x_align(Clutter.ActorAlign.CENTER)
         }
+
+        this.showDash();
+    }
+
+    hideDash() {
+        this.dash.hide();
+        this.dash.height = 0;
+    }
+
+    showDash() {
+        this.dash.hide();
+        this.dash.height = -1;
     }
 
 }
